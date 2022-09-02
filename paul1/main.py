@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+#----------------------------------------------------------------------------
+# Created By  : Max Paul
+# Created Date: September 1, 2022
+# version ='1.0'
+# ---------------------------------------------------------------------------
 '''
 The circumference of a circle with a radius of 2.750 is 17.27875
 
@@ -20,6 +26,7 @@ while loop.lower() == 'y':
 
     except ValueError:
         print("You have entered a non number value for the radius")
+        loop = 'n'
 
 
 '''
