@@ -1,0 +1,6 @@
+1. We will initialize a while loop to "y" so our user has the ability to do many calculations
+2. we verify that the user enters a number we can do calculations on, else throw a value error we cant calculate on strings
+3. we calculate the area by self.radius ** 2 * np.pi
+4. we calculate the volume by (4/3) * np.pi * self.radius ** 3
+5. we calculate the circumference self.radius * np.pi * 2
+6. We print out the result and ask if the user would like to go again
