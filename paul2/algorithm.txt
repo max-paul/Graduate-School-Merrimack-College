@@ -1,0 +1,8 @@
+1. Take 2 sep inputs from the command line
+2. make sure the value of the inputs are positive integers.
+    else ValueError
+3. we will divide x and y by each other and check for a remainder
+   we will repeat this step for y and x
+
+4. if the remainder for either equations has a remainder of 0 return True
+5. if neither returns a remainder of 0 return false
