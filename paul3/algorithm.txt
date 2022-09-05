@@ -1,0 +1,17 @@
+1. set up the board given a hard coded grid size and number of ships
+2. create 10 empty arrays and replace all values with .
+3. next iterate over all 10 arrays and randomly assign index with S
+4. draw the current state of the board
+5. while the game is not over
+    So there are still ships present on the board
+6. take in a row value from the command line
+   if value is less than the range the grid has to offer throw value error and ask again
+7. take in a col value from the command line
+   if value is less than the range the grid has to offer throw value error and ask again
+8.if both col and row values are valid
+    check if that index is an S, if S replace with X and return hit
+    check if value is already X, tell the user they already tried that!
+    if the value is not S or X the user missed, replace index with O
+9. Draw the board after the move is complete
+10. loop back and check if the game is over after each move
+    if the game is over end the loop else ask the user for more input

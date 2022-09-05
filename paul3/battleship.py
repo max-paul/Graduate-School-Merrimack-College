@@ -1,6 +1,9 @@
 import random
 
 """
+Written by Max Paul
+
+
     -------BATTLESHIPS-------
     Pre-reqs: Loops, Strings, Arrays, 2D Arrays, Global Variables, Methods
     How it will work:
@@ -45,7 +48,7 @@ def setupBoard(myBoard):
     # now place the ships
     # you can get a random row by using
     # for the range of num_of_ships, randomly place an S
-    for i in range(1,num_of_ships,1):
+    for i in range(0,num_of_ships,1):
         randomRow = random.randint(0, grid_size - 1)
         randomCol = random.randint(0, grid_size - 1)
         # set the random index to S for ship
@@ -56,12 +59,16 @@ def setupBoard(myBoard):
 
 def hitOrMiss(myBoard, row, col):
     if myBoard[row][col] == "S":
-        print("HIT!!")
+        print("HIT")
         myBoard[row][col] = "X"
+        return "HIT"
+    elif myBoard[row][col] == "X":
+        print("Already hit the ship here :) ")
     else:
         myBoard[row][col] = "O"
-        print("miss")
-    return
+        print("MISS!")
+        return "MISS"
+
 
 
 def isGameOver(myBoard):
@@ -77,16 +84,33 @@ def isGameOver(myBoard):
         return True
 
 
-
 def main(myBoard):
-    myBoard = setupBoard(myBoard)
-    drawBoard(myBoard)
-    hitOrMiss(myBoard,0,0)
-    print(isGameOver(myBoard))
-    # here do everything like
     #   set up the board
-    #   till the game is over
+    myBoard = setupBoard(myBoard)
     #     draw the board
+    drawBoard(myBoard)
+    # while the game is not over
+    while not isGameOver(myBoard):
+        try:
+            # lets get user input within the bounds
+            row = int(input("Please Enter a row: "))
+            if (row < 0) or (row > 10):
+                print("Invalid Row Number")
+                raise ValueError
+            col = int(input("Please Enter a col: "))
+            if (col < 0) or (col > 10):
+                print("Invalid Col Number")
+                raise ValueError
+
+            hitOrMiss(myBoard,row,col)
+            drawBoard(myBoard)
+        except ValueError as RowIssue:
+            print(f"Please enter a valid integer within the limits of the grid size {grid_size} x {grid_size}")
+            continue
+
+
+    # here do everything like
+    #   till the game is over
     #     ask for a row and column and check it is a hit or a miss
     # when the game is over, print that message!
     print('Game over!')
