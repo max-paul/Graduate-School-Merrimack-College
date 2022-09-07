@@ -33,7 +33,7 @@ class Engineer(Student):
 
 
 class Doctor(Student):
-    
+
     # intializing the variables within the class
     def __init__(self, name, age, hospital):
         Student.__init__(self, name, age)
