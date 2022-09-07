@@ -1,8 +1,7 @@
 #student class that implments name and age, assertion forces strings upon this class
-from abc import ABC, abstractmethod
 
 
-class Student(ABC):
+class Student():
     # initializing our global variables for this interface
     def __init__(self, name, age):
         self.self = self
