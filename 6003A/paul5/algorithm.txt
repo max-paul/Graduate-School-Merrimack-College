@@ -1,0 +1,17 @@
+1. create a studnent method that takes in the ABC object
+2. initialize the student class with name and age
+3. REQUIRE that name and age needs to Strings
+4. create display function that prints name and age
+
+
+5. create engineer class that inherits the Student class
+6. initalize the student class w correct variables
+7. add the courses var to Engineer
+8. displayEngineer function that shows name age and courses
+
+9. create Doctor class that inherits the Student class
+10. initalize the student class w correct variables
+11. add the hospital var to Doctor
+12. displayDoctor function that shows name age and hospital
+
+13. Initialize each class with their correct variables and display methods
