@@ -1,0 +1,4 @@
+1. create a class that allows us to initialize a deque with
+2. keep asking the user if they want to add or remove anything?
+3. select front or back
+4. the deque can add or remove items at either side of the data struct
