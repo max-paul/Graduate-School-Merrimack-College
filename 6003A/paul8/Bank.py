@@ -11,15 +11,6 @@ class Bank:
         self.accounts.remove(account)
 
 
-    def showValidatedAccount(self,accNum,pinNum):
-        for i in self.accounts:
-            if i.get_account_number() == accNum and i.get_pin() == pinNum:
-                i.toString()
-            elif i.get_account_number() != accNum:
-                print(f"Account not found for account number: {accNum} ")
-            elif i.get_pin() != pinNum:
-                print(f"Account not found for pin number: {pinNum} ")
-
     def validate_user(self,accNum,pinNum):
         for i in self.accounts:
             if i.get_account_number() == accNum and i.get_pin() == pinNum:

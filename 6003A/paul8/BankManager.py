@@ -22,6 +22,25 @@ class BankManager:
     def getSelection(self,index):
         return self.menu_items[index-1]
 
+    def promptForAccountNumberAndPIN(self, Bank):
+
+        accNum = int(input("Please enter your account number: "))
+        pinNum = str(input("Please enter your pin number: "))
+
+        if len(Bank.accounts) > 0:
+            for i in Bank.accounts:
+                if i.get_account_number() == accNum and i.get_pin() == pinNum:
+                    return i
+                if i.get_account_number() != accNum:
+                    print(f"Account not found for account number: {accNum} ")
+                    if i.get_pin() != pinNum:
+                        print("Invalid PIN")
+                    return None
+        else:
+            print("No accounts in the Bank")
+            return None
+
+
 
     # our main loop to run the application
     def main(self):
@@ -51,27 +70,22 @@ class BankManager:
                         new_acc.set_account_number()
                         new_acc.toString()
                         bank.addAccountToBank(new_acc)
-                        # check if account number already exists ??
+                        string_data = new_acc.toString()
+                        print(string_data)
                         continue
                     except ValueError:
                         print("Invalid Choice")
                         continue
                 elif selection == 2:
                     # if provided with the correct information we shold return the data
-                    try:
-                        accNum = int(input("Please enter your account number: "))
-                        pinNum = str(input("Please enter your pin number: "))
-                        bank.showValidatedAccount(accNum, pinNum)
-                        continue
-                    except ValueError:
-                        print("Invalid Choice")
-                        continue
+                    # if we provide bad information tell the user, then continue
+                    account = self.promptForAccountNumberAndPIN(bank)
+                    # print out the account info
+                    print(account)
 
                 elif selection == 3:
                     try:
-                        accNum = int(input("Please enter your account number: "))
-                        pinNum = str(input("Please enter your pin number: "))
-                        current_account = bank.validate_user(accNum,pinNum)
+                        current_account = self.promptForAccountNumberAndPIN(bank)
                         if current_account:
                             current_account.set_custom_pin()
                     except ValueError:
@@ -79,28 +93,24 @@ class BankManager:
                         continue
                 elif selection == 4:
                     try:
-                        accNum = int(input("Please enter your account number: "))
-                        pinNum = str(input("Please enter your pin number: "))
-                        current_account = bank.validate_user(accNum, pinNum)
+                        # if amount is negative prompt again
+                        current_account = self.promptForAccountNumberAndPIN(bank)
                         amount_deposit = float(input("Please enter the amount to deposit: "))
                         if current_account:
-                            current_account.deposit(amount_deposit)
+                            dep = current_account.deposit(amount_deposit)
+
                     except ValueError:
                         print("Invalid Choice")
                         continue
                 elif selection == 5:
                     try:
                         print("Account to transfer From: ")
-                        accNum = int(input("Please enter your account number: "))
-                        pinNum = str(input("Please enter your pin number: "))
-                        current_account = bank.validate_user(accNum, pinNum)
+                        current_account = self.promptForAccountNumberAndPIN(bank)
 
                         print("Account to transfer too: ")
-                        accNumTransfer = int(input("Please enter your account number: "))
-                        pinNumTransfer = str(input("Please enter your pin number: "))
-                        transfer_account = bank.validate_user(accNumTransfer, pinNumTransfer)
-
+                        transfer_account = self.promptForAccountNumberAndPIN(bank)
                         transfer_amount = float(input("How much would you like to transfer?: "))
+
                         current_account.withdraw(transfer_amount)
                         transfer_account.deposit(transfer_amount)
                     except ValueError:

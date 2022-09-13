@@ -59,7 +59,12 @@ class Account:
         return self.balance
 
     def deposit(self, amount):
-        self.BALANCE = self.BALANCE + amount
+
+        if amount > 0:
+            self.BALANCE = self.BALANCE + amount
+        else:
+            print("Amount cannot be negative.  Try again.")
+
 
     def withdraw(self, amount):
         self.BALANCE = self.BALANCE - amount
@@ -78,16 +83,19 @@ class Account:
         else:
             return False  # be sure to change this
 
-
     def toString(self):
-        print("============================================================")
-        print(f"Account Number: {self.account_number}")
-        print(f"Owner First Name: {self.owner_first_name}")
-        print(f"Owner Last Name: {self.owner_last_name}")
-        print(f"Owner SSN: {self.SSN}")
-        print(f"PIN: {self.PIN}")
-        print(f"Balance: ${self.BALANCE}")
-        print("============================================================")
+        var = ["============================================================",
+               f"Account Number: {self.account_number}",
+               f"Owner First Name: {self.owner_first_name}",
+               f"Owner Last Name: {self.owner_last_name}",
+               f"Owner SSN: {self.SSN}",
+               f"PIN: {self.PIN}",
+               f"Balance: ${self.BALANCE}",
+               "============================================================"]
+        toPrint = ''
+        for i in var:
+            toPrint += i + "\n"
+        return toPrint
 
     def random_account_number(self, n):
         range_start = 10 ** (n - 1)
