@@ -10,24 +10,24 @@ class Bank:
         # implement removeAccountFromBank here
         self.accounts.remove(account)
 
-    def findAccount(self,accountNumber):
-        for i in self.accounts:
-            if accountNumber == i.get_account_number():
-                return True
-            else:
-                return False
 
-    def showAccount(self,accNum,pinNum):
+    def showValidatedAccount(self,accNum,pinNum):
         for i in self.accounts:
             if i.get_account_number() == accNum and i.get_pin() == pinNum:
                 i.toString()
-            else:
-                print('wrong')
+            elif i.get_account_number() != accNum:
+                print(f"Account not found for account number: {accNum} ")
+            elif i.get_pin() != pinNum:
+                print(f"Account not found for pin number: {pinNum} ")
 
     def validate_user(self,accNum,pinNum):
         for i in self.accounts:
             if i.get_account_number() == accNum and i.get_pin() == pinNum:
                 return i
+            elif i.get_account_number() != accNum:
+                print(f"Account not found for account number: {accNum} ")
+            elif i.get_pin() != pinNum:
+                print(f"Account not found for pin number: {pinNum} ")
 
     def check_limit(self):
         if self.bank_limit > len(self.accounts):

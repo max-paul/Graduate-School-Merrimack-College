@@ -30,7 +30,7 @@ class BankManager:
         while loop:
             x = 1
             for i in self.menu_items:
-                print(x ,":", i)
+                print(x, ":", i)
                 x += 1
             try:
                 selection = int(input("Please make a selection from the list, 1-11: "))
@@ -61,7 +61,7 @@ class BankManager:
                     try:
                         accNum = int(input("Please enter your account number: "))
                         pinNum = str(input("Please enter your pin number: "))
-                        bank.showAccount(accNum, pinNum)
+                        bank.showValidatedAccount(accNum, pinNum)
                         continue
                     except ValueError:
                         print("Invalid Choice")
@@ -88,8 +88,24 @@ class BankManager:
                     except ValueError:
                         print("Invalid Choice")
                         continue
+                elif selection == 5:
+                    try:
+                        print("Account to transfer From: ")
+                        accNum = int(input("Please enter your account number: "))
+                        pinNum = str(input("Please enter your pin number: "))
+                        current_account = bank.validate_user(accNum, pinNum)
 
+                        print("Account to transfer too: ")
+                        accNumTransfer = int(input("Please enter your account number: "))
+                        pinNumTransfer = str(input("Please enter your pin number: "))
+                        transfer_account = bank.validate_user(accNumTransfer, pinNumTransfer)
 
+                        transfer_amount = float(input("How much would you like to transfer?: "))
+                        current_account.withdraw(transfer_amount)
+                        transfer_account.deposit(transfer_amount)
+                    except ValueError:
+                        print("Invalid Choice")
+                        continue
 
             except ValueError:
                 print("Invalid Choice")

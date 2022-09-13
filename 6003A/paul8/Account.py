@@ -59,12 +59,10 @@ class Account:
         return self.balance
 
     def deposit(self, amount):
-        self.BALANCE += amount
-        return 0
+        self.BALANCE = self.BALANCE + amount
 
-    def withdraw(self,amount):
-        self.BALANCE -= amount
-        return 0  # be sure to change this
+    def withdraw(self, amount):
+        self.BALANCE = self.BALANCE - amount
 
     def isValidPIN(self,pin):
         # implement isValidPIN here
