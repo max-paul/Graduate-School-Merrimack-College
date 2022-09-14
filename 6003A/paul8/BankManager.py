@@ -1,26 +1,28 @@
 from Account import Account
 from Bank import Bank
+
+
 class BankManager:
     # settings our constructor
     def __init__(self):
         self.self = self
         self.menu_items = [
-                           "Open Account",
-                           "Get account information and balance",
-                           "Change PIN",
-                           "Deposit money into account",
-                           "Transfer money between accounts",
-                           "Withdraw money from an account",
-                           "Make an ATM withdrawal from an account",
-                           "Deposit change into an account",
-                           "Close an account",
-                           "Add monthly interest to all accounts",
-                           "End Program"
-                           ]
+            "Open Account",
+            "Get account information and balance",
+            "Change PIN",
+            "Deposit money into account",
+            "Transfer money between accounts",
+            "Withdraw money from an account",
+            "Make an ATM withdrawal from an account",
+            "Deposit change into an account",
+            "Close an account",
+            "Add monthly interest to all accounts",
+            "End Program"
+        ]
 
     # function to handle our menu selection
-    def getSelection(self,index):
-        return self.menu_items[index-1]
+    def getSelection(self, index):
+        return self.menu_items[index - 1]
 
     def promptForAccountNumberAndPIN(self, Bank):
 
@@ -40,7 +42,11 @@ class BankManager:
             print("No accounts in the Bank")
             return None
 
-
+    def non_negative_dollar(self, dollars):
+        if dollars < 0:
+            return True
+        else:
+            return False
 
     # our main loop to run the application
     def main(self):
@@ -81,7 +87,7 @@ class BankManager:
                     # if we provide bad information tell the user, then continue
                     account = self.promptForAccountNumberAndPIN(bank)
                     # print out the account info
-                    print(account)
+                    print(account.toString())
 
                 elif selection == 3:
                     try:
@@ -95,10 +101,18 @@ class BankManager:
                     try:
                         # if amount is negative prompt again
                         current_account = self.promptForAccountNumberAndPIN(bank)
+                        # ask for amount to dp
                         amount_deposit = float(input("Please enter the amount to deposit: "))
-                        if current_account:
-                            dep = current_account.deposit(amount_deposit)
 
+                        negLoop = True
+                        while negLoop:
+                            if self.non_negative_dollar(amount_deposit) == False:
+                                break
+                            else:
+                                print("Amount cannot be negative.  Try again.")
+                                amount_deposit = float(input("Please enter the amount to deposit: "))
+                                negLoop = self.non_negative_dollar(amount_deposit)
+                                continue
                     except ValueError:
                         print("Invalid Choice")
                         continue
@@ -120,5 +134,3 @@ class BankManager:
             except ValueError:
                 print("Invalid Choice")
                 continue
-
-

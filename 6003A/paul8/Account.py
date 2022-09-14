@@ -59,12 +59,7 @@ class Account:
         return self.balance
 
     def deposit(self, amount):
-
-        if amount > 0:
-            self.BALANCE = self.BALANCE + amount
-        else:
-            print("Amount cannot be negative.  Try again.")
-
+        self.BALANCE = self.BALANCE + amount
 
     def withdraw(self, amount):
         self.BALANCE = self.BALANCE - amount
