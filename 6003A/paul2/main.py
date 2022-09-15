@@ -15,7 +15,10 @@ while True:
         #displaying the results and the boolean result
         print(f"Is the remainder for {num1} and {num2} 0?: {remainder.value}")
         # break as we successfully completed the run
-        break
+        if remainder.value == False:
+            continue
+        else:
+            break
     # defining value error and continuing to give the user another chance to submit values
     except ValueError:
         print("we must enter positive integers only :) ")
