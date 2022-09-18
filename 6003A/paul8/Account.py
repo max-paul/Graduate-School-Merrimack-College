@@ -90,6 +90,7 @@ class Account:
             return False
         else:
             self.BALANCE = self.BALANCE - amount
+            print(f"New Balance is {self.BALANCE}")
             return True
 
     def isValidPIN(self,pin):
@@ -136,6 +137,20 @@ class Account:
 
 
     def atmWithdraw(self,totalAmount):
-        twent = 20
-        ten = 10
-        five = 5
+        def get_digits(weight_entry):
+            out = {}
+            entries = ('twenties', 20), ('tens', 10), ('fives', 5)
+            for word, num in entries:
+                out[word] = weight_entry // num
+                weight_entry %= num
+            print(f"Returning {int(out['twenties'])} 20s")
+            print(f"Returning {int(out['tens'])} 10s")
+            print(f"Returning {int(out['fives'])} 5s")
+            return out
+
+        if (totalAmount % 5) != 0:
+            print("Not a valid mutiple of 5.")
+            return False
+        else:
+            data = get_digits(totalAmount)
+

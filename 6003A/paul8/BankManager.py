@@ -131,16 +131,13 @@ class BankManager:
                     if current_account != None:
                         withdraw = BU.promptUserForPositiveNumber("Enter Amount to withdraw in dollars (no cents) "
                                                                   "in multiples of 5")
-                        #current_account.withdraw(withdraw)
+                        current_account.atmWithdraw(withdraw)
+                        current_account.withdraw(withdraw)
 
-
-                    return "ATM withdrawl"
                     '''
                     put in number and calculate the amount per 20 10 and 5
         
                     '''
-
-
 
                 elif selection == 11:
                     loop = False
