@@ -3,15 +3,15 @@ from random import randint
 class Account:
     def __init__(self):
         # accountNumber starts as 0 but has a setter method.
-        self.account_number = 0
+        self.account_number = self.random_account_number(8)
         # initalizing the variables for name
-        self.owner_first_name = ''
-        self.owner_last_name = ''
+        self.owner_first_name = None
+        self.owner_last_name = None
         # a String (not an integer) that contains the 9 digits of the
         # account owner’s social security number
-        self.SSN = ""
+        self.SSN = None
         # randomly generated upon account creation and may start with one or more zeroes
-        self.PIN = 0
+        self.PIN = self.random_pin()
         # represents the balance in cents
         self.BALANCE = 0
         # add methods as getters and setters for attributes
@@ -38,8 +38,18 @@ class Account:
     def get_ssn(self):
         return self.SSN
 
-    def set_ssn(self,SSN):
-        self.SSN = SSN
+    def set_ssn(self):
+        loop = True
+        while loop:
+            #ssn = int(input("Enter your SSN:"))
+            ssn = 123456789
+            print(len(str(ssn)))
+            if len(str(ssn)) == 9:
+                self.SSN = ssn
+                loop = False
+            else:
+                print("Social Security Number must be 9 digits")
+                continue
 
     def get_pin(self):
         return self.PIN
@@ -48,21 +58,39 @@ class Account:
         self.PIN = self.random_pin()
 
     def set_custom_pin(self):
-        custom_pin = str(input("Please enter a custom pin:"))
-        custom_pin_check = str(input("Please validate the pin:"))
-
-        if custom_pin == custom_pin_check:
-            self.PIN = custom_pin
-
+        loop = True
+        while loop:
+            custom_pin = str(input("Please enter a custom pin:"))
+            if len(custom_pin) != 4:
+                print(f"{custom_pin} is not 4 digits")
+                continue
+            else:
+                custom_pin_check = str(input("Please validate the pin:"))
+                if custom_pin == custom_pin_check:
+                    self.PIN = custom_pin
+                    loop = False
+                    print("PIN updated")
+                else:
+                    print("PINS do not match, try again")
+                    continue
 
     def get_balance(self):
-        return self.balance
+        return self.BALANCE
+
+    def set_balance(self,balance):
+        self.BALANCE = balance
 
     def deposit(self, amount):
         self.BALANCE = self.BALANCE + amount
+        print(f"New Balance: ${self.get_balance()}")
 
     def withdraw(self, amount):
-        self.BALANCE = self.BALANCE - amount
+        if (self.BALANCE - amount) < 0:
+            print(f"Insufficient funds in account {self.account_number}")
+            return False
+        else:
+            self.BALANCE = self.BALANCE - amount
+            return True
 
     def isValidPIN(self,pin):
         # implement isValidPIN here
@@ -85,7 +113,7 @@ class Account:
                f"Owner Last Name: {self.owner_last_name}",
                f"Owner SSN: {self.SSN}",
                f"PIN: {self.PIN}",
-               f"Balance: ${self.BALANCE}",
+               f"Balance: {self.BALANCE}",
                "============================================================"]
         toPrint = ''
         for i in var:
@@ -96,9 +124,8 @@ class Account:
         range_start = 10 ** (n - 1)
         range_end = (10 ** n) - 1
         num = randint(range_start, range_end)
-        s = '0'+ str(num)
-        if s.startswith('0'):
-            s.replace('0', str(randint(0, 9)))
+        if str(num).startswith('0'):
+            num.replace('0', str(randint(0, 9)))
         return num
 
     def random_pin(self):
@@ -106,3 +133,9 @@ class Account:
         range_end = (10 ** 4) - 1
         num = randint(range_start, range_end)
         return str(num)
+
+
+    def atmWithdraw(self,totalAmount):
+        twent = 20
+        ten = 10
+        five = 5

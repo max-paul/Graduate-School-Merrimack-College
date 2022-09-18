@@ -1,7 +1,8 @@
 from Account import Account
 from Bank import Bank
+from BankUtility import BankUtility
 
-
+BU = BankUtility()
 class BankManager:
     # settings our constructor
     def __init__(self):
@@ -28,16 +29,15 @@ class BankManager:
 
         accNum = int(input("Please enter your account number: "))
         pinNum = str(input("Please enter your pin number: "))
-
         if len(Bank.accounts) > 0:
             for i in Bank.accounts:
-                if i.get_account_number() == accNum and i.get_pin() == pinNum:
-                    return i
-                if i.get_account_number() != accNum:
-                    print(f"Account not found for account number: {accNum} ")
-                    if i.get_pin() != pinNum:
-                        print("Invalid PIN")
-                    return None
+                if i.get_account_number() == accNum:
+                    if i.get_pin() == pinNum:
+                        return i
+                    else:
+                        continue
+                else:
+                    continue
         else:
             print("No accounts in the Bank")
             return None
@@ -53,7 +53,9 @@ class BankManager:
         loop = True
         bank = Bank()
         while loop:
+            print(bank.accounts)
             x = 1
+            valid_options = 11
             for i in self.menu_items:
                 print(x, ":", i)
                 x += 1
@@ -66,14 +68,11 @@ class BankManager:
                         new_acc = Account()
                         # create the account
                         # get input we need to get
-                        first_name = str(input("Please Enter your first name: "))
-                        last_name = str(input("Please Enter your last_name name: "))
-                        ssn = int(input("Please Enter your SSN: "))
+                        first_name = "max" #BU.promtUserForString("Please Enter your first name: ")
+                        last_name = "paul" #BU.promtUserForString("Please Enter your last name: ")
+                        new_acc.set_ssn()
                         new_acc.set_owner_first_name(first_name)
                         new_acc.set_owner_last_name(last_name)
-                        new_acc.set_ssn(str(ssn))
-                        new_acc.set_pin()
-                        new_acc.set_account_number()
                         new_acc.toString()
                         bank.addAccountToBank(new_acc)
                         string_data = new_acc.toString()
@@ -87,50 +86,67 @@ class BankManager:
                     # if we provide bad information tell the user, then continue
                     account = self.promptForAccountNumberAndPIN(bank)
                     # print out the account info
-                    print(account.toString())
+                    if account != None:
+                        print(account.toString())
 
                 elif selection == 3:
                     try:
                         current_account = self.promptForAccountNumberAndPIN(bank)
-                        if current_account:
+                        if current_account != None:
                             current_account.set_custom_pin()
                     except ValueError:
                         print("Invalid Choice")
                         continue
                 elif selection == 4:
-                    try:
-                        # if amount is negative prompt again
-                        current_account = self.promptForAccountNumberAndPIN(bank)
-                        # ask for amount to dp
-                        amount_deposit = float(input("Please enter the amount to deposit: "))
 
-                        negLoop = True
-                        while negLoop:
-                            if self.non_negative_dollar(amount_deposit) == False:
-                                break
-                            else:
-                                print("Amount cannot be negative.  Try again.")
-                                amount_deposit = float(input("Please enter the amount to deposit: "))
-                                negLoop = self.non_negative_dollar(amount_deposit)
-                                continue
-                    except ValueError:
-                        print("Invalid Choice")
-                        continue
+                    # if amount is negative prompt again
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    # ask for amount to dp
+                    if current_account != None:
+                        amount = BU.promptUserForPositiveNumber("Enter amount to deposit in dollars and cents (e.g 2.57): ")
+                        current_account.deposit(amount)
+
                 elif selection == 5:
-                    try:
-                        print("Account to transfer From: ")
-                        current_account = self.promptForAccountNumberAndPIN(bank)
+                    print("Account to transfer From: ")
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    print("Account to transfer too: ")
+                    transfer_account = self.promptForAccountNumberAndPIN(bank)
 
-                        print("Account to transfer too: ")
-                        transfer_account = self.promptForAccountNumberAndPIN(bank)
-                        transfer_amount = float(input("How much would you like to transfer?: "))
+                    if current_account != None or transfer_account != None:
+                        transfer_amount = BU.promptUserForPositiveNumber("How much would you like to transfer?: ")
 
-                        current_account.withdraw(transfer_amount)
-                        transfer_account.deposit(transfer_amount)
-                    except ValueError:
-                        print("Invalid Choice")
-                        continue
+                        # if withdraw was a success then we can deposit.
+                        status = current_account.withdraw(transfer_amount)
+                        if status:
+                            transfer_account.deposit(transfer_amount)
 
+                elif selection == 6:
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    if current_account != None:
+                        withdraw = BU.promptUserForPositiveNumber("How much would you like to withdraw?: ")
+                        current_account.withdraw(withdraw)
+
+                elif selection == 7:
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    if current_account != None:
+                        withdraw = BU.promptUserForPositiveNumber("Enter Amount to withdraw in dollars (no cents) "
+                                                                  "in multiples of 5")
+                        #current_account.withdraw(withdraw)
+
+
+                    return "ATM withdrawl"
+                    '''
+                    put in number and calculate the amount per 20 10 and 5
+        
+                    '''
+
+
+
+                elif selection == 11:
+                    loop = False
+                elif selection > 11:
+                    "Invalid Choice"
+                    continue
             except ValueError:
-                print("Invalid Choice")
+                print("Invalid Input, please try again.")
                 continue

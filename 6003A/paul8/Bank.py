@@ -4,7 +4,12 @@ class Bank:
         self.bank_limit = 100
 
     def addAccountToBank(self,account):
-        self.accounts.append(account)
+        if len(self.accounts) <= self.bank_limit:
+            self.accounts.append(account)
+            return True
+        else:
+            print("No More accounts available")
+            return False
 
     def removeAccountFromBank(self,account):
         # implement removeAccountFromBank here
@@ -25,3 +30,11 @@ class Bank:
             return True
         else:
             return False
+
+
+    def findAccount(self,accountNumer):
+        for i in self.accounts:
+            if i.get_account_number():
+                return i
+        else:
+            return None
