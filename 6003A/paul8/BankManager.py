@@ -68,8 +68,8 @@ class BankManager:
                         new_acc = Account()
                         # create the account
                         # get input we need to get
-                        first_name = "max" #BU.promtUserForString("Please Enter your first name: ")
-                        last_name = "paul" #BU.promtUserForString("Please Enter your last name: ")
+                        first_name = BU.promtUserForString("Please Enter your first name: ")
+                        last_name = BU.promtUserForString("Please Enter your last name: ")
                         new_acc.set_ssn()
                         new_acc.set_owner_first_name(first_name)
                         new_acc.set_owner_last_name(last_name)
@@ -130,14 +130,25 @@ class BankManager:
                     current_account = self.promptForAccountNumberAndPIN(bank)
                     if current_account != None:
                         withdraw = BU.promptUserForPositiveNumber("Enter Amount to withdraw in dollars (no cents) "
-                                                                  "in multiples of 5")
-                        current_account.atmWithdraw(withdraw)
-                        current_account.withdraw(withdraw)
+                                                                  "in multiples of 5: ")
+                        if current_account.atmWithdraw(withdraw):
+                            current_account.withdraw(withdraw)
+                        else:
+                            pass
+                elif selection == 8:
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    if current_account != None:
+                        coinDeposits = BU.promtUserForString("Enter Coints to deposit!: ")
+                        current_account.deposit(coinDeposits)
 
-                    '''
-                    put in number and calculate the amount per 20 10 and 5
-        
-                    '''
+                elif selection == 9:
+                    current_account = self.promptForAccountNumberAndPIN(bank)
+                    if current_account != None:
+                        bank.removeAccountFromBank(current_account)
+
+                elif selection == 10:
+                    rate = BU.promptUserForPositiveNumber("Enter Annual Interest rate percentage (e.g 2.25 for 2.25%):  ")
+                    bank.addInterest(rate)
 
                 elif selection == 11:
                     loop = False

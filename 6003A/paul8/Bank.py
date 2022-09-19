@@ -13,7 +13,11 @@ class Bank:
 
     def removeAccountFromBank(self,account):
         # implement removeAccountFromBank here
-        self.accounts.remove(account)
+        try:
+            self.accounts.remove(account)
+            print("Account Successfully Removed")
+        except ValueError:
+            print(f"Account Not Found for account number: {self.accounts.account_number}")
 
 
     def validate_user(self,accNum,pinNum):
@@ -31,10 +35,21 @@ class Bank:
         else:
             return False
 
-
     def findAccount(self,accountNumer):
         for i in self.accounts:
             if i.get_account_number():
                 return i
         else:
             return None
+
+
+    def addInterest(self,interestRate):
+        if len(self.accounts) >= 1:
+            for i in self.accounts:
+                total = i.BALANCE + ((i.BALANCE * ((interestRate/ 100))) / 12)
+                total = round(total,2)
+                i.set_balance(total)
+                print(f"Deposited {round(((i.BALANCE * ((interestRate/ 100))) / 12),2)} into {i.get_account_number()}")
+
+        else:
+            print("There are no accounts in the bank!")

@@ -41,9 +41,7 @@ class Account:
     def set_ssn(self):
         loop = True
         while loop:
-            #ssn = int(input("Enter your SSN:"))
-            ssn = 123456789
-            print(len(str(ssn)))
+            ssn = int(input("Enter your SSN:"))
             if len(str(ssn)) == 9:
                 self.SSN = ssn
                 loop = False
