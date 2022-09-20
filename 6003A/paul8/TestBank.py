@@ -136,7 +136,5 @@ class TestingBank(unittest.TestCase):
         num = BU.generateRandomInteger(1,100)
         self.assertEqual(type(num), int)
 
-
-
 if __name__ == '__main__':
     unittest.main()
