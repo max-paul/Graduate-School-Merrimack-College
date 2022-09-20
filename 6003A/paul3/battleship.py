@@ -117,4 +117,5 @@ def main(myBoard):
 
 
 # do not forget to call main!
-main(grid)
+if __name__ == "__main__":
+    main(grid)

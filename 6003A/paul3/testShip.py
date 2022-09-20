@@ -44,6 +44,7 @@ class TestShip(unittest.TestCase):
                 #everytime we see a ship lets add
                 if myBoard[i][j] == "S":
                     shipCount += 1
+
         # we should have 5 ships
         self.assertEqual(shipCount, 5)
 

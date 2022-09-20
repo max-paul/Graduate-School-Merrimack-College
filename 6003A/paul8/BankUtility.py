@@ -29,7 +29,7 @@ class BankUtility:
 
     def convertFromDollarsToCents(self,money):
 
-        return float(str(money).replace(".",""))
+        return float("."+str(money).replace(".",""))
 
     def promptUserForPositiveNumber(self,inputNaming):
         loop = True
