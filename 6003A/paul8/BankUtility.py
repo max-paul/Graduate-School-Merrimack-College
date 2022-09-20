@@ -8,7 +8,7 @@ class BankUtility:
 
 
 
-    def isNum(self,number):
+    def isNumeric(self,number):
         if str(number).isnumeric():
             return True
         else:
@@ -27,7 +27,9 @@ class BankUtility:
                 print("Please enter a string!")
                 loop = True
 
+    def convertFromDollarsToCents(self,money):
 
+        return float(str(money).replace(".",""))
 
     def promptUserForPositiveNumber(self,inputNaming):
         loop = True

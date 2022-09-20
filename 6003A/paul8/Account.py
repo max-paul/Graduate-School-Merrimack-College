@@ -3,7 +3,7 @@ from random import randint
 class Account:
     def __init__(self):
         # accountNumber starts as 0 but has a setter method.
-        self.account_number = self.random_account_number(8)
+        self.account_number = 12345678#self.random_account_number(8)
         # initalizing the variables for name
         self.owner_first_name = None
         self.owner_last_name = None
@@ -88,7 +88,7 @@ class Account:
             return False
         else:
             self.BALANCE = self.BALANCE - amount
-            print(f"New Balance is {self.BALANCE}")
+            print(f"New Balance: ${self.BALANCE}")
             return True
 
     def isValidPIN(self,pin):
@@ -151,4 +151,5 @@ class Account:
             return False
         else:
             data = get_digits(totalAmount)
+            self.withdraw(totalAmount)
 

@@ -1,3 +1,4 @@
+
 class Bank:
     def __init__(self):
         self.accounts = []
@@ -5,6 +6,12 @@ class Bank:
 
     def addAccountToBank(self,account):
         if len(self.accounts) <= self.bank_limit:
+
+            for i in self.accounts:
+                if i.account_number == account.account_number:
+                    print("Account Number has been taken!")
+                    account.set_account_number()
+                    print(f"New Account Num set to {account.account_number}")
             self.accounts.append(account)
             return True
         else:
@@ -20,15 +27,6 @@ class Bank:
             print(f"Account Not Found for account number: {self.accounts.account_number}")
 
 
-    def validate_user(self,accNum,pinNum):
-        for i in self.accounts:
-            if i.get_account_number() == accNum and i.get_pin() == pinNum:
-                return i
-            elif i.get_account_number() != accNum:
-                print(f"Account not found for account number: {accNum} ")
-            elif i.get_pin() != pinNum:
-                print(f"Account not found for pin number: {pinNum} ")
-
     def check_limit(self):
         if self.bank_limit > len(self.accounts):
             return True
@@ -37,13 +35,13 @@ class Bank:
 
     def findAccount(self,accountNumer):
         for i in self.accounts:
-            if i.get_account_number():
+            if i.get_account_number() == accountNumer:
                 return i
         else:
             return None
 
 
-    def addInterest(self,interestRate):
+    def addMonthlyInterest(self,interestRate):
         if len(self.accounts) >= 1:
             for i in self.accounts:
                 total = i.BALANCE + ((i.BALANCE * ((interestRate/ 100))) / 12)

@@ -1,6 +1,7 @@
 from Account import Account
 from Bank import Bank
 from BankUtility import BankUtility
+from CoinCollector import CoinCollector
 
 BU = BankUtility()
 class BankManager:
@@ -26,18 +27,17 @@ class BankManager:
         return self.menu_items[index - 1]
 
     def promptForAccountNumberAndPIN(self, Bank):
-
         accNum = int(input("Please enter your account number: "))
         pinNum = str(input("Please enter your pin number: "))
         if len(Bank.accounts) > 0:
-            for i in Bank.accounts:
-                if i.get_account_number() == accNum:
-                    if i.get_pin() == pinNum:
-                        return i
-                    else:
-                        continue
+            if Bank.findAccount(accNum) != None:
+                account = Bank.findAccount(accNum)
+                if account.get_pin() == pinNum:
+                    return account
                 else:
-                    continue
+                    print("Invalid PIN")
+            else:
+                print(f"No account found for {accNum}")
         else:
             print("No accounts in the Bank")
             return None
@@ -74,9 +74,10 @@ class BankManager:
                         new_acc.set_owner_first_name(first_name)
                         new_acc.set_owner_last_name(last_name)
                         new_acc.toString()
-                        bank.addAccountToBank(new_acc)
-                        string_data = new_acc.toString()
-                        print(string_data)
+                        status = bank.addAccountToBank(new_acc)
+                        if status:
+                            string_data = new_acc.toString()
+                            print(string_data)
                         continue
                     except ValueError:
                         print("Invalid Choice")
@@ -131,15 +132,16 @@ class BankManager:
                     if current_account != None:
                         withdraw = BU.promptUserForPositiveNumber("Enter Amount to withdraw in dollars (no cents) "
                                                                   "in multiples of 5: ")
-                        if current_account.atmWithdraw(withdraw):
-                            current_account.withdraw(withdraw)
-                        else:
-                            pass
+                        current_account.atmWithdraw(withdraw)
+
                 elif selection == 8:
+
                     current_account = self.promptForAccountNumberAndPIN(bank)
                     if current_account != None:
                         coinDeposits = BU.promtUserForString("Enter Coints to deposit!: ")
-                        current_account.deposit(coinDeposits)
+                        collector = CoinCollector(coinDeposits)
+                        collector.parseChange()
+                        current_account.deposit(collector.totalCoinValue)
 
                 elif selection == 9:
                     current_account = self.promptForAccountNumberAndPIN(bank)
@@ -148,7 +150,7 @@ class BankManager:
 
                 elif selection == 10:
                     rate = BU.promptUserForPositiveNumber("Enter Annual Interest rate percentage (e.g 2.25 for 2.25%):  ")
-                    bank.addInterest(rate)
+                    bank.addMonthlyInterest(rate)
 
                 elif selection == 11:
                     loop = False

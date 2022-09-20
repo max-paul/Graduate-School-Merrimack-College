@@ -22,6 +22,7 @@ class CoinCollector:
                     total += .5
                 elif i == "W":
                     total +=1
+            self.totalCoinValue = total
 
 
 
