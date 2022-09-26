@@ -6,6 +6,7 @@ class CoinCollector:
         self.CoinString = CoinString
         self.totalCoinValue = 0
 
+    # parse then change!
     def parseChange(self):
         total = 0
         if str(self.CoinString).isalpha():

@@ -17,27 +17,35 @@ class Account:
         # add methods as getters and setters for attributes
         # getters and setters
 
+    # getter for account number
     def get_account_number(self):
         return self.account_number
 
+    # setter for account number
     def set_account_number(self):
         self.account_number = self.random_account_number(8)
 
+    # getter for owner first name
     def get_owner_first_name(self):
         return self.owner_first_name
 
+    # setter for owner first name
     def set_owner_first_name(self, new_owner_first_name):
         self.owner_first_name = new_owner_first_name
 
+    # getter for owner last name
     def get_owner_last_name(self):
         return self.owner_last_name
 
+    # setter for owner last name
     def set_owner_last_name(self, new_owner_last_name):
         self.owner_last_name = new_owner_last_name
 
+    # getting ssn
     def get_ssn(self):
         return self.SSN
 
+    # set SSN with limits
     def set_ssn(self):
         loop = True
         while loop:
@@ -49,12 +57,15 @@ class Account:
                 print("Social Security Number must be 9 digits")
                 continue
 
+    # getting pin
     def get_pin(self):
         return self.PIN
 
+    # setting pin to a random pin
     def set_pin(self):
         self.PIN = self.random_pin()
 
+    # setting a custom pin with limits
     def set_custom_pin(self):
         loop = True
         while loop:
@@ -72,16 +83,20 @@ class Account:
                     print("PINS do not match, try again")
                     continue
 
+    # getting balance
     def get_balance(self):
         return self.BALANCE
 
+    # setting balance
     def set_balance(self,balance):
         self.BALANCE = balance
 
+    # function for deposit
     def deposit(self, amount):
         self.BALANCE = self.BALANCE + amount
         print(f"New Balance: ${self.get_balance()}")
 
+    # withdrawl function
     def withdraw(self, amount):
         if (self.BALANCE - amount) < 0:
             print(f"Insufficient funds in account {self.account_number}")
@@ -91,6 +106,7 @@ class Account:
             print(f"New Balance: ${self.BALANCE}")
             return True
 
+    # checks if the pin is valid!
     def isValidPIN(self,pin):
         # implement isValidPIN here
         if pin == self.PIN:
@@ -98,6 +114,7 @@ class Account:
         else:
             return False  # be sure to change this
 
+    # checks if the account number is valid
     def isValidAccountNumber(self,accountNum):
         # implement isValidPIN here
         if accountNum == self.account_number:
@@ -105,6 +122,7 @@ class Account:
         else:
             return False  # be sure to change this
 
+    # to string print message
     def toString(self):
         var = ["============================================================",
                f"Account Number: {self.account_number}",
@@ -119,6 +137,8 @@ class Account:
             toPrint += i + "\n"
         return toPrint
 
+    # setting a random account number within limits
+    # not allowed to start with 0
     def random_account_number(self, n):
         range_start = 10 ** (n - 1)
         range_end = (10 ** n) - 1
@@ -127,6 +147,7 @@ class Account:
             num.replace('0', str(randint(0, 9)))
         return num
 
+    # setting a random pin
     def random_pin(self):
         range_start = 10 ** (4 - 1)
         range_end = (10 ** 4) - 1
@@ -134,6 +155,7 @@ class Account:
         return str(num)
 
 
+    # an ATM action
     def atmWithdraw(self,totalAmount):
         def get_digits(weight_entry):
             out = {}

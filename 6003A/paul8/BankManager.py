@@ -2,7 +2,7 @@ from Account import Account
 from Bank import Bank
 from BankUtility import BankUtility
 from CoinCollector import CoinCollector
-
+# initializing the bank utility class
 BU = BankUtility()
 class BankManager:
     # settings our constructor
@@ -26,6 +26,7 @@ class BankManager:
     def getSelection(self, index):
         return self.menu_items[index - 1]
 
+    # prompting user for acc number and pin
     def promptForAccountNumberAndPIN(self, Bank):
         accNum = int(input("Please enter your account number: "))
         pinNum = str(input("Please enter your pin number: "))
@@ -42,6 +43,7 @@ class BankManager:
             print("No accounts in the Bank")
             return None
 
+    # make sure dollars is not negative
     def non_negative_dollar(self, dollars):
         if dollars < 0:
             return True

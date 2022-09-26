@@ -7,14 +7,14 @@ class BankUtility:
         self.self = self
 
 
-
+    # checks if num is numeric
     def isNumeric(self,number):
         if str(number).isnumeric():
             return True
         else:
             return False
 
-
+    # asks user for string
     def promtUserForString(self,inputNaming):
         loop = True
 
@@ -27,10 +27,12 @@ class BankUtility:
                 print("Please enter a string!")
                 loop = True
 
+    # converting dollars to cents
     def convertFromDollarsToCents(self,money):
 
         return float("."+str(money).replace(".",""))
 
+    # getting a positive number
     def promptUserForPositiveNumber(self,inputNaming):
         loop = True
         while loop:
@@ -41,6 +43,7 @@ class BankUtility:
                 print("Amount can not be negative, Try again")
                 continue
 
+    # generate a random int
     def generateRandomInteger(self, min, max):
         num = random.randint(min, max)
         return num

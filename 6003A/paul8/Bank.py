@@ -4,6 +4,7 @@ class Bank:
         self.accounts = []
         self.bank_limit = 100
 
+    # adding accounts to the BANK
     def addAccountToBank(self,account):
         if len(self.accounts) <= self.bank_limit:
 
@@ -18,6 +19,7 @@ class Bank:
             print("No More accounts available")
             return False
 
+    # removing account obj frm the bank
     def removeAccountFromBank(self,account):
         # implement removeAccountFromBank here
         try:
@@ -26,13 +28,14 @@ class Bank:
         except ValueError:
             print(f"Account Not Found for account number: {self.accounts.account_number}")
 
-
+    # check if we have reached the limit of accounts
     def check_limit(self):
         if self.bank_limit > len(self.accounts):
             return True
         else:
             return False
 
+    # finding an account
     def findAccount(self,accountNumer):
         for i in self.accounts:
             if i.get_account_number() == accountNumer:
@@ -41,6 +44,7 @@ class Bank:
             return None
 
 
+    #adding monthly interest!
     def addMonthlyInterest(self,interestRate):
         if len(self.accounts) >= 1:
             for i in self.accounts:
