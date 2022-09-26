@@ -1,0 +1,33 @@
+1. start loop of program
+2. ask user for their input based on the menu
+3. if not valid input prompt user to try again
+4. based on their input follow the course of action
+    - any wrong input WILL be prompted to be reinputted, without losing progress of input
+    a. open account
+        - get first and last name
+            - set both
+        - SSN that is 9 digits
+        - set account num and pin randomly
+            - must not start w 0
+    b. print out all the account info
+        - prompt acc num and pin
+    c. set a custom 4 digit pin
+        - prompt acc num and pin
+    d. deposit money into account
+        - prompt acc num and pin
+    e. transfer money to account
+        - prompt acc num and pin
+        - how much to move?
+    f. withdraw money from account
+        - prompt acc num and pin
+        - how much to move?
+    g. atm withdrawl
+        - prompt acc num and pin
+        - how much to move?
+    h. parse change deposi?
+        - prompt acc num and pin
+        - how much change?
+    i. remove account obj from bank
+        - prompt acc num and pin
+    j. add monthly input
+    k. end process and kill appl

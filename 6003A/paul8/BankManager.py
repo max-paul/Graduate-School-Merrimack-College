@@ -55,7 +55,6 @@ class BankManager:
         loop = True
         bank = Bank()
         while loop:
-            print(bank.accounts)
             x = 1
             valid_options = 11
             for i in self.menu_items:
@@ -143,7 +142,7 @@ class BankManager:
                         coinDeposits = BU.promtUserForString("Enter Coints to deposit!: ")
                         collector = CoinCollector(coinDeposits)
                         collector.parseChange()
-                        current_account.deposit(collector.totalCoinValue)
+                        current_account.deosit(collector.totalCoinValue)
 
                 elif selection == 9:
                     current_account = self.promptForAccountNumberAndPIN(bank)

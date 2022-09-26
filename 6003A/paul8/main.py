@@ -10,4 +10,5 @@ Professor: GK
 from BankManager import BankManager
 from Account import Account
 
-acc = BankManager().main()
+if __name__ == "__main__":
+    acc = BankManager().main()
