@@ -86,6 +86,11 @@ def main():
             """
             mylist.insertBeginning(user_input)
         elif user_input == current_data and current_data == nums[0]:
+            """
+            if user input == current data
+            and current data is equal to the lowest item in the sorted list
+            lets remove the first item
+            """
             mylist.removeBeginning()
 
     #mylist.resetCurrent()
