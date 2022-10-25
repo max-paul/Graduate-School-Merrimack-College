@@ -94,7 +94,6 @@ def main():
             """
             mylist.removeBeginning()
 
-    #mylist.resetCurrent()
     mylist.printList("List after Operations")
 
 if __name__ == "__main__":
