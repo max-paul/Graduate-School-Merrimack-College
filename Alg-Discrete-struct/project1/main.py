@@ -58,18 +58,36 @@ def main():
             next_data = mylist.Current.Next.Data
         except:
             next_data = None
+
         if user_input == next_data:
             print(f"Found {user_input} in the Linked List")
             print(f"Removing Value {user_input}")
             mylist.removeCurrentNext()
 
-        if user_input > current_data and user_input < next_data:
+        if user_input > current_data and \
+                (user_input < next_data if next_data is not None else 9999999999999999999):
+            """
+            if user input is greater than current data AND
+            user input is greater than next data
+            
+            Handling if the Next value is None i.e end of LL,
+            hard coded 9999999999999999999 (so if a value we are entering is greater than the max,
+            im assuming an item in our list will be less than 9999999999999999999 as the next value
+            """
             print(f"Did Not Find {user_input} in the Linked List")
             print(f"Adding Value {user_input}, Between {current_data} and {next_data}")
             mylist.insertCurrentNext(user_input)
+        elif user_input < current_data == nums[0]:
+            """
+            Handling insertion at index 0
+            
+            if user input is less than the current value AND 
+            the current value is equal to the lowest item in our list (Index 0 as its a sorted list)
+            """
+            mylist.insertBeginning(user_input)
 
     mylist.resetCurrent()
     mylist.printList("List after Operations")
 
-
-main()
+if __name__ == "__main__":
+    main()
