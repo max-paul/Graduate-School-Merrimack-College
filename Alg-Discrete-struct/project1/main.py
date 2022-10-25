@@ -85,8 +85,10 @@ def main():
             the current value is equal to the lowest item in our list (Index 0 as its a sorted list)
             """
             mylist.insertBeginning(user_input)
+        elif user_input == current_data and current_data == nums[0]:
+            mylist.removeBeginning()
 
-    mylist.resetCurrent()
+    #mylist.resetCurrent()
     mylist.printList("List after Operations")
 
 if __name__ == "__main__":
