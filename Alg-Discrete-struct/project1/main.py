@@ -1,5 +1,5 @@
 from linkedList import LinkedList
-
+import sys
 def readFile():
     """
     our operational method for reading in the txt file!
@@ -65,14 +65,15 @@ def main():
             mylist.removeCurrentNext()
 
         if user_input > current_data and \
-                (user_input < next_data if next_data is not None else 9999999999999999999):
+                (user_input < next_data if next_data is not None else sys.maxsize):
             """
             if user input is greater than current data AND
             user input is greater than next data
             
             Handling if the Next value is None i.e end of LL,
-            hard coded 9999999999999999999 (so if a value we are entering is greater than the max,
-            im assuming an item in our list will be less than 9999999999999999999 as the next value
+            hard coded sys.maxsize (so if a value we are entering is greater than the max,
+            im assuming an item in our list will be less than sys.maxsize as the next value
+            sys.maxsize is the maximum size a data struct may by in python: 9223372036854775807
             """
             print(f"Did Not Find {user_input} in the Linked List")
             print(f"Adding Value {user_input}, Between {current_data} and {next_data}")
