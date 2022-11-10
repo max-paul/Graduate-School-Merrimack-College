@@ -17,10 +17,7 @@ def main():
     myTree = Tree(data)
     for x in data:
         myTree.insert(int(x))
-    myTree.printtest()
-
-    # build the weighted edges
-
+    myTree.printMatrix()
 
 
 main()
