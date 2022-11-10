@@ -78,9 +78,13 @@ class Tree:
         print("==========")
 
     def createMatrix(self, number):
+        """
+        creating a nXn matrix to based on the number of elements in our Tree
+        we can use this empty matrix to store adjacency values
+        :param number:
+        :return:
+        """
         matrix = [[0 for i in range(number)] for j in range(number)]
-
-
         return matrix
 
     def printAdjMatrix(self):
@@ -94,30 +98,45 @@ class Tree:
                     inputData = self.data
                     # try left
                     try:
+                        # getting the left node of current
                         currentLeft = n.Left.Data
+                        # getting the Left weight
                         leftWeight = abs(currentNode - currentLeft)
+                        # getting index in input data for input location in matrix
                         indexLeft = inputData.index(int(currentLeft))
 
+                        # updating the matrix row, based on iteration which also equals the place in the tree
                         matrix[self.iteration][indexLeft] = leftWeight
                     except:
+                        # passing because there is no left data
                         pass
 
                     try:
+                        # getting the Right node of current
                         currentRight = n.Right.Data
+
+                        # getting the right weight
                         rightWeight = abs(currentNode - currentRight)
+
+                        # getting index in input data for input location in matrix
                         indexRight = inputData.index(int(currentRight))
+                        # updating the matrix row, based on iteration which also equals the place in the tree
                         matrix[self.iteration][indexRight] = rightWeight
                     except:
+                        # passing because there is no right data
                         pass
+                    # incrementing iteration
                     self.iteration+=1
                 else:
-                    # if we have nothing to hanlde
+                    # if we have nothing to handle, go to next row in matrix
                     self.iteration+=1
 
-
+                # recursion __visit__ inside of itself
+                # https://www.w3schools.com/python/gloss_python_function_recursion.asp#:~:text=Python%20also%20accepts%20function%20recursion,data%20to%20reach%20a%20result.
                 __visit__(n.Left, matrix)
                 __visit__(n.Right, matrix)
         print("\n--------")
         __visit__(self.Root, matrix)
+        # print final matrix
         pprint(matrix)
         print("\n--------")
