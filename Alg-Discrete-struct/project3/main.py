@@ -16,6 +16,7 @@ def main():
 
     # Create a program that reads a list of numbers from a text file named “numbers.txt”
     data = readFile() # ["34","12","8","13","55"]
+    # using your exact numbers from example to show that it works; please use any numbers you feel needed
 
 
     # create a binary tree ordered as the example presented in class
@@ -39,4 +40,6 @@ def main():
     [0, 0, 0, 0, 0]]
     '''
 
-main()
+
+if __name__ == "__main__":
+    main()
