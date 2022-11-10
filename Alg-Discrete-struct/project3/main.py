@@ -13,11 +13,30 @@ def readFile():
     return nums
 
 def main():
-    data = readFile()
+
+    # Create a program that reads a list of numbers from a text file named “numbers.txt”
+    data = readFile() # ["34","12","8","13","55"]
+
+
+    # create a binary tree ordered as the example presented in class
     myTree = Tree(data)
     for x in data:
         myTree.insert(int(x))
-    myTree.printMatrix()
 
+    #From the tree structure you have created, create
+    # and print a adjacency matrix that represents the graph
+    # equivalent to the tree, considering an edge from the node
+    # to its child with weight the absolute value of the difference
+    # between the numbers of the nodes
+    myTree.printAdjMatrix()
+
+    '''
+    output -> 
+    [[0, 22, 0, 0, 21],
+    [0, 0, 4, 1, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0]]
+    '''
 
 main()

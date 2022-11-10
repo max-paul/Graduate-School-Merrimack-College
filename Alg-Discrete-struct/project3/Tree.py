@@ -83,7 +83,7 @@ class Tree:
 
         return matrix
 
-    def printMatrix(self):
+    def printAdjMatrix(self):
         matrix = self.createMatrix(len(self.data))
 
         def __visit__(n, matrix):
