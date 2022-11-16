@@ -17,6 +17,6 @@ def multiply_matrices(X, Y, n):
            # iterate through rows of Y
            for k in range(len(Y)):
                Matrix[i][j] += X[i][k] * Y[k][j]
+    return Matrix
 
-
-multiply_matrices([[2,7],[3,5]], [[8,-4],[6,6]], 2)
+print(multiply_matrices([[2,7],[3,5]], [[8,-4],[6,6]], 2))
