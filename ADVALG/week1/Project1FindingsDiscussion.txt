@@ -1,0 +1,177 @@
+Report:
+
+We implemented the quicksort algorithm and applied it to random vectors of different sizes
+ranging from 1000 to 10000 elements. We measured the time taken to sort each vector and
+compared it with the expected time complexity of the algorithm.
+
+
+Our experiments show that the quicksort algorithm performs efficiently on large datasets,
+with a time complexity of O(n log n) in the average and best case. However, for small datasets
+or datasets with a specific structure that triggers the worst-case scenario, the algorithm may
+perform poorly, with a time complexity of O(n^2).
+
+During this experience I saw our time complexity grow, but not but anything concerning. The main concern here is the number
+of iterations we are seeing, as we need to worry about scaling of our resources. From 1000 to 100000 we are seeing a
+15x increase in method calls on the interpreter.
+
+
+From looking at the chart provided in class we can see that we expect a O(nlogn), as in a linear time complexity,
+we expect time to increase as length of the array does. According to the times below:
+
+
+Sorted 1000 elements in 0.000659 seconds
+Sorted 2000 elements in 0.001332 seconds
+Sorted 3000 elements in 0.002236 seconds
+Sorted 4000 elements in 0.002823 seconds
+Sorted 5000 elements in 0.003568 seconds
+Sorted 6000 elements in 0.004479 seconds
+Sorted 7000 elements in 0.005052 seconds
+Sorted 8000 elements in 0.006165 seconds
+Sorted 9000 elements in 0.007127 seconds
+Sorted 10000 elements in 0.007789 seconds
+
+
+From the screenshot provided in timeComplexityEstimates.png we can see we expect at the worst case a much larger value,
+but still a linear relationship, which is the exact same thing we see here with the relationship of these times. the relationship
+we expect to see based on Big O is present here in this set of data.
+
+C profile output
+
+Sorted 1000 elements in 0.000659 seconds
+         13431 function calls (12113 primitive calls) in 0.002 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.001    0.001 <string>:1(<module>)
+   1319/1    0.001    0.000    0.001    0.001 Project1.py:6(quicksort)
+        1    0.000    0.000    0.002    0.002 {built-in method builtins.exec}
+     1319    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    10790    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 2000 elements in 0.001332 seconds
+         28762 function calls (26102 primitive calls) in 0.003 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.003    0.003 <string>:1(<module>)
+   2661/1    0.003    0.000    0.003    0.003 Project1.py:6(quicksort)
+        1    0.000    0.000    0.003    0.003 {built-in method builtins.exec}
+     2661    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    23437    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 3000 elements in 0.002236 seconds
+         46130 function calls (42152 primitive calls) in 0.005 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.005    0.005 <string>:1(<module>)
+   3979/1    0.004    0.000    0.005    0.005 Project1.py:6(quicksort)
+        1    0.000    0.000    0.005    0.005 {built-in method builtins.exec}
+     3979    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    38169    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 4000 elements in 0.002823 seconds
+         66309 function calls (60975 primitive calls) in 0.007 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.007    0.007 <string>:1(<module>)
+   5335/1    0.006    0.000    0.007    0.007 Project1.py:6(quicksort)
+        1    0.000    0.000    0.007    0.007 {built-in method builtins.exec}
+     5335    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    55636    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 5000 elements in 0.003568 seconds
+         80692 function calls (74040 primitive calls) in 0.009 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.009    0.009 <string>:1(<module>)
+   6653/1    0.007    0.000    0.009    0.009 Project1.py:6(quicksort)
+        1    0.000    0.000    0.009    0.009 {built-in method builtins.exec}
+     6653    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    67383    0.002    0.000    0.002    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 6000 elements in 0.004479 seconds
+         102898 function calls (94940 primitive calls) in 0.011 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.011    0.011 <string>:1(<module>)
+   7959/1    0.008    0.000    0.011    0.011 Project1.py:6(quicksort)
+        1    0.000    0.000    0.011    0.011 {built-in method builtins.exec}
+     7959    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    86977    0.002    0.000    0.002    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 7000 elements in 0.005052 seconds
+         117889 function calls (108555 primitive calls) in 0.012 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.012    0.012 <string>:1(<module>)
+   9335/1    0.010    0.000    0.012    0.012 Project1.py:6(quicksort)
+        1    0.000    0.000    0.012    0.012 {built-in method builtins.exec}
+     9335    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+    99216    0.002    0.000    0.002    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 8000 elements in 0.006165 seconds
+         143346 function calls (132710 primitive calls) in 0.015 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.015    0.015 <string>:1(<module>)
+  10637/1    0.012    0.000    0.015    0.015 Project1.py:6(quicksort)
+        1    0.000    0.000    0.015    0.015 {built-in method builtins.exec}
+    10637    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+   122069    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 9000 elements in 0.007127 seconds
+         163704 function calls (151680 primitive calls) in 0.017 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.017    0.017 <string>:1(<module>)
+  12025/1    0.014    0.000    0.017    0.017 Project1.py:6(quicksort)
+        1    0.000    0.000    0.017    0.017 {built-in method builtins.exec}
+    12025    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+   139651    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+Sorted 10000 elements in 0.007789 seconds
+         175432 function calls (162176 primitive calls) in 0.018 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.018    0.018 <string>:1(<module>)
+  13257/1    0.015    0.000    0.018    0.018 Project1.py:6(quicksort)
+        1    0.000    0.000    0.018    0.018 {built-in method builtins.exec}
+    13257    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+   148915    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}

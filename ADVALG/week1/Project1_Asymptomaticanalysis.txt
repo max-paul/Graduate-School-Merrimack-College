@@ -1,0 +1,29 @@
+T(n) = O(1), if n <= 1
+T(n) = O(n) + T(n/2) + T(n/2), otherwise
+
+The base case is when the length of the array is less than or equal to 1,
+in which case the function simply returns the array in O(1) time. In the recursive case,
+the function partitions the array into two subarrays, each of size n/2 (on average), and
+recursively sorts each subarray using the quicksort algorithm. The partitioning step takes O(n)
+time, since it involves iterating over the entire array once. The total time complexity of the
+lgorithm is therefore given by the recurrence relation:
+
+T(n) = O(1), if n <= 1
+T(n) = O(n) + 2T(n/2), otherwise
+
+Using the Master Theorem, we can solve this recurrence relation and obtain the time complexity of
+the quicksort algorithm. The Master Theorem states that if a recurrence relation has the form:
+
+T(n) = aT(n/b) + f(n)
+
+where a >= 1 and b > 1 are constants, and f(n) is a function that represents the cost of
+dividing the problem into subproblems, then the time complexity of the algorithm is:
+
+If f(n) = O(n^c) for some constant c < log_b(a), then T(n) = Theta(n^log_b(a)).
+If f(n) = Theta(n^c log^k(n)) for some constants c and k >= 0, then T(n) = Theta(n^c log^(k+1)(n)).
+If f(n) = Omega(n^c) for some constant c > log_b(a), and if af(n/b) <= cf(n) for sufficiently large n, then T(n) = Theta(f(n)).
+
+In the case of the quicksort algorithm, we have a = 2, b = 2, and f(n) = O(n),
+since the partitioning step takes linear time. Therefore, we have log_b(a) = log_2(2) = 1,
+which means that c < 1, and we are in case 1 of the Master Theorem.
+The time complexity of the quicksort algorithm is Theta(n log n).
