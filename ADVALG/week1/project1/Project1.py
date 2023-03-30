@@ -4,6 +4,14 @@ import cProfile
 
 
 def quicksort(array):
+    """
+    that works by partitioning an array into two sub-arrays,
+    one containing elements smaller than a chosen pivot element,
+    and one containing elements larger than the pivot.
+
+    :param array:
+    :return: the sorted array
+    """
     if len(array) <= 1:
         return array
     pivot = array[0]
@@ -18,6 +26,11 @@ def quicksort(array):
 
 
 def test_sorting_algorithm(sort_func):
+    """
+    for each set, range 1000 to 10000 lets quick sort and see how long it takes.
+    :param sort_func:
+    :return:
+    """
     for n in range(1000, 11000, 1000):
         array = [random.randint(1, 100000) for _ in range(n)]
         start_time = time.time()
