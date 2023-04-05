@@ -5,13 +5,14 @@ The base case is when the length of the array is less than or equal to 1,
 in which case the function simply returns the array in O(1) time. In the recursive case,
 the function partitions the array into two subarrays, each of size n/2 (on average), and
 recursively sorts each subarray using the quicksort algorithm. The partitioning step takes O(n)
-time, since it involves iterating over the entire array once. The total time complexity of the
-lgorithm is therefore given by the recurrence relation:
+time, since it involves iterating over the entire array once. The total time complexity
+is therefore given by the recurrence relation:
 
 T(n) = O(1), if n <= 1
 T(n) = O(n) + 2T(n/2), otherwise
 
-Using the Master Theorem, we can solve this recurrence relation and obtain the time complexity of
+Using the Master Theorem(https://www.programiz.com/dsa/master-theorem)
+, we can solve this recurrence relation and obtain the time complexity of
 the quicksort algorithm. The Master Theorem states that if a recurrence relation has the form:
 
 T(n) = aT(n/b) + f(n)
