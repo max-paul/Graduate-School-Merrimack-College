@@ -1,3 +1,4 @@
+
 # knapsack unbounded - Greedy approach
 
 def knapsack(v, w, cap):
@@ -19,30 +20,35 @@ def knapsack(v, w, cap):
     return ans           # returns the list of added items
 
 def main():
-    items = int(input("Number of distinct items: "))
+
+    info = [
+        [[838],[[5,10],[8,20],[12,30]]],
+        [[997],[[3,17],[5,23],[7,29],[11,31],[13,37]]],
+        [[250],[[5,25],[6,36],[7,49],[8,64]]],
+        [[360],[[5,25],[6,36],[7,49],[8,64]]]
+        ]
+
+# step1, get index 0 for each to get capacity
+# step2, get index 1 length for the number of items.
+# step3, iterate over index 1, where item 1 is value and 2 is weight
+
+    items = int(len(info))
     values, weights = [],[]
-    for i in range(items):
-        v = int(input("Value of item "+str(i+1)+": "))
-        w = int(input("Weight of item "+str(i+1)+": "))
-        values.append(v)
-        weights.append(w)
-    capacity = int(input("Maximum weight (capacity): "))
-    answer = knapsack(values, weights, capacity)
-    tv, tw = 0, 0
-    for a in answer:
-        print("Item - Value:", values[a], "- Weight:", weights[a])
-        tv += values[a]
-        tw += weights[a]
-    print("Items:", len(answer), "- Value:", tv, "- Weight:", tw)
-"""
-Run the Knapsack Greedy code for the following cases (list of items - [value, weight])
+    for i in info:
+        values = []
+        weights = []
+        weightValues = i[1]
+        for y in weightValues:
+            values.append(y[0])
+            weights.append(y[1])
 
-([5,10] [8,20] [12,30]) - capacity 838
+        capacity = i[0][0]
+        answer = knapsack(values, weights, capacity)
+        tv, tw = 0, 0
+        for a in answer:
+            print("Item - Value:", values[a], "- Weight:", weights[a])
+            tv += values[a]
+            tw += weights[a]
+        print("Items:", len(answer), "- Value:", tv, "- Weight:", tw)
 
-([3,17] [5,23] [7,29] [11,31] [13,37] - capacity 997
-
-([5,25] [6,36] [7,49] [8,64]) - capacity 250
-
-([5,25] [6,36] [7,49] [8,64]) - capacity 360
-"""
 main()
