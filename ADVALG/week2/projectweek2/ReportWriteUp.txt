@@ -1,0 +1,12 @@
+Overall this was a really fun experience to play with the trees.
+
+
+Although im not sure how someone could debug and work on a tree problem without
+excellent knowledge of a debugger. The debugger in pycharm is what made understanding
+each step of the process clear and concise. The hardest part about this code
+was in the project 2 when we needed to delete an existing element from the
+tree if it exists. For this I implemented a new method called search that recursively
+checks the tree for a match to delete.
+
+
+this was a good challenge that made me think outside the box! enjoyed this one.
