@@ -21,6 +21,7 @@ def knapsack(v, w, cap):
 
 def main():
 
+    # creating a data stuct to hold capacity as well as value and weight.
     info = [
         [[838],[[5,10],[8,20],[12,30]]],
         [[997],[[3,17],[5,23],[7,29],[11,31],[13,37]]],
@@ -28,9 +29,9 @@ def main():
         [[360],[[5,25],[6,36],[7,49],[8,64]]]
         ]
 
-# step1, get index 0 for each to get capacity
-# step2, get index 1 length for the number of items.
-# step3, iterate over index 1, where item 1 is value and 2 is weight
+    # step1, get index 0 for each to get capacity
+    # step2, get index 1 length for the number of items.
+    # step3, iterate over index 1, where item 1 is value and 2 is weight
 
     items = int(len(info))
     values, weights = [],[]

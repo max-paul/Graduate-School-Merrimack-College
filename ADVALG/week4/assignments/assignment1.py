@@ -3,18 +3,33 @@ from fractions import Fraction
 """
 Notes:
 
+INSTRUCTIONS:
+    Run the Egyptian Fractions for the following examples:
+    
+    5/6, 7/15, 23/34, 121/321, 5/123
+    
+    Write remarks in your new code with the solution of such cases
+    
+    
+
+
+    
+When you say NEW code I will write my own solution other than the one from class...
 Hoping I dont lose points for using the built in fractions package.. only used for formatting the print statement
 
 
-This was a fun task and a cool mathmatical solution. Satisfying to understand and watch!!
 
-Cool facts from some research...
-Egyptian Fractions are a way of representing a positive rational number as a sum of distinct unit fractions.
-Egyptian Fractions have applications in diverse fields such as computer science, cryptography, and music theory.
-Egyptian Fractions have interesting properties, such as always having a finite number of terms in their expansion.
+Notes and Remarks:
 
-
-I find the fact that the optimal Egyptian Fraction representation unsolved problem in mathematics.
+    This was a fun task and a cool mathmatical solution. Satisfying to understand and watch!!
+    
+    Cool facts from some research...
+    Egyptian Fractions are a way of representing a positive rational number as a sum of distinct unit fractions.
+    Egyptian Fractions have applications in diverse fields such as computer science, cryptography, and music theory.
+    Egyptian Fractions have interesting properties, such as always having a finite number of terms in their expansion.
+    
+    
+    I find the fact that the optimal Egyptian Fraction representation unsolved problem in mathematics.
 """
 
 def egyptian_fractions(numerator, denominator):
