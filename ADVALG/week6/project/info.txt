@@ -1,0 +1,10 @@
+This code implements the simplex algorithm to solve a linear programming problem in standard form,
+where the objective is to minimize a linear function subject to linear constraints and non-negativity
+constraints on the variables. The algorithm iteratively improves a feasible solution by identifying a
+non-basic variable with negative reduced cost, computing a feasible direction for improving the solution,
+and determining the step length along that direction. The code uses NumPy to perform matrix computations
+and array operations efficiently.
+
+
+
+

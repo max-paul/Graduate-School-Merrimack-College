@@ -1,0 +1,6 @@
+The code outputs the number of pizzas and sandwiches the food truck should make to maximize their profit,
+as well as the total profit achieved. In this case, the optimal solution suggests that the food truck
+should make 4 pizzas and 10 sandwiches, which would result in a total profit of $330. This solution is
+obtained by considering all possible combinations of pizzas and sandwiches that can be made within the
+limited preparation time and choosing the one that yields the highest profit. This solution can help the
+food truck make informed decisions about how many pizzas and sandwiches to make in order to maximize their profit.
