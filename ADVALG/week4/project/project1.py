@@ -10,21 +10,29 @@ This program must be your own, do not use someone else’s code
 
 
 """
-
-# Open the file for reading
+from knapsack import knapsack
 with open("sample.txt", "r") as f:
-    # Iterate over each line in the file
+    # Parse the items from the file
+    items = []
     for line in f:
         # Split the line by comma and remove any whitespace
         line = line.strip().split(",")
-
         # Extract the values from the split line and assign them to variables
         name = line[0]
-        price = line[1]
+        price = int(line[1])
         height = int(line[2])
         width = int(line[3])
         depth = int(line[4])
 
-        # Calculate the max volume and print the result
-        max_volume = height * width * depth
-        print(f"Max volume for {name} at price {price} is {max_volume}")
+        # Add the item to the list
+        items.append((name, price, height, width, depth))
+
+    # Calculate the maximum total value and selected items using the knapsack function
+    max_value, selected_items = knapsack(items, max_volume)
+
+    # Print the results
+    print(f"Maximum total value: {max_value}")
+    print("Selected items:")
+    for name, price in selected_items:
+        print(f"{name} at price {price}")
+
