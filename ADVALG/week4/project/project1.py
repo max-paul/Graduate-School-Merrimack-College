@@ -1,38 +1,39 @@
-"""
-Create a program that receives the list of possible named items with the following information:
-
-○ Value ($), Height (in), Width (in), Depth (in)
-
-The limit of the optimal solution is expressed by the volume in cubic inches (in3) and the program has to maximize the value within the cubic limit
-Your program should read textual file with one item kind per line with the information separated by comma, for example this fileLinks to an external site. list four items with values 35, 40, 45, and 58 dollars and increasing dimensions
-Your program should read any file with this format (name, value, height, width, depth) per line
-This program must be your own, do not use someone else’s code
-
-
-"""
+# This function reads data from a file and calculates the total volume of all items
+# then sorts them by value in descending order
+# it then uses the knapsack algorithm to select the items to be included in the knapsack
+# based on their value and volume, and calculates the total value and volume of the selected items.
 from knapsack import knapsack
-with open("sample.txt", "r") as f:
-    # Parse the items from the file
-    items = []
-    for line in f:
-        # Split the line by comma and remove any whitespace
-        line = line.strip().split(",")
-        # Extract the values from the split line and assign them to variables
-        name = line[0]
-        price = int(line[1])
-        height = int(line[2])
-        width = int(line[3])
-        depth = int(line[4])
 
-        # Add the item to the list
-        items.append((name, price, height, width, depth))
+def main():
+    filename = 'sample.txt' # the file name to read data from
+    max_vol = 0 # the total volume of all items read from the file
 
-    # Calculate the maximum total value and selected items using the knapsack function
-    max_value, selected_items = knapsack(items, max_volume)
+    items = [] # an empty list to store the information of the items
+    with open(filename) as f:
+        for line in f:
+            item = line.strip().split(",") # each line contains information about an item, which is separated by a comma
+            name = item[0] # the name of the item
+            value = int(item[1]) # the value of the item
+            height = int(item[2]) # the height of the item
+            width = int(item[3]) # the width of the item
+            depth = int(item[4]) # the depth of the item
+            volume = height * width * depth # the volume of the item
+            items.append((name, value, volume)) # add the item's information to the list of items
+            max_vol += volume # add the volume of the current item to the total volume
 
-    # Print the results
-    print(f"Maximum total value: {max_value}")
-    print("Selected items:")
-    for name, price in selected_items:
-        print(f"{name} at price {price}")
+    items = sorted(items, key=lambda x: x[1], reverse=True) # sort the items by their values in descending order
+    ans = knapsack([i[1] for i in items], [i[2] for i in items], max_vol) # use the knapsack algorithm to select the items to be included in the knapsack
+    selected_items = [items[i] for i in ans] # create a list of the selected items
+    total_value = sum([i[1] for i in selected_items]) # calculate the total value of the selected items
+    total_volume = sum([i[2] for i in selected_items]) # calculate the total volume of the selected items
+    unused_volume = max_vol - total_volume # calculate the unused volume in the knapsack
+
+    # print the total number of selected items, total value, total volume, and unused volume in the knapsack
+    print(f"Total items: {len(selected_items)}; total value: {total_value}; total volume: {total_volume}; total unused volume: {unused_volume}")
+    # print the names of the selected items
+    print([i[0] for i in selected_items])
+
+
+if __name__ == "__main__":
+    main()
 

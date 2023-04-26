@@ -1,25 +1,19 @@
-def knapsack(items, max_volume):
-    # Initialize the dynamic programming table
-    table = [[0] * (max_volume + 1) for _ in range(len(items) + 1)]
-    # Iterate over each item and fill in the table
-    for i, item in enumerate(items):
-        name, price, height, width, depth = item
-        for j in range(1, max_volume + 1):
-            if height * width * depth > j:
-                table[i+1][j] = table[i][j]
-            else:
-                table[i+1][j] = max(table[i][j], table[i][j-height*width*depth] + price)
+def knapsack(v, w, cap):
+    rwv = []  # triplet ratio, weight, value, index
+    for i in range(len(v)):
+        rwv.append([v[i] / w[i], w[i], v[i], i])
+    rwv.sort(reverse=True)  # sort from high to low rate
+    ans = []  # the list of added items
+    tw = 0  # total weight
+    found = True
+    while (found):  # until no fitting item is found
+        found = False
+        for t in rwv:  # search an item to add
+            if (t[1] + tw) <= cap:  # if the item fits
+                ans.append(t[3])  # add it
+                tw += t[1]
+                found = True
+                break
+    return ans  # returns the list of added items
 
-    # Backtrack to find the selected items
-    selected_items = []
-    i, j = len(items), max_volume
-    while i > 0 and j > 0:
-        if table[i][j] != table[i-1][j]:
-            name, price, height, width, depth = items[i-1]
-            selected_items.append((name, price))
-            j -= height * width * depth
-        i -= 1
-
-    # Return the maximum total value and the selected items
-    return table[-1][-1], selected_items
 
