@@ -17,26 +17,20 @@ def hill_climbing():
     # Evaluate function at x = 1 to get initial best value
     best_value = myFunction(best_x)
     # Loop through all values of x from 2 to 9999
-    for x in range(0, 9999):
+    for x in range(0, 9999,3):
         # Evaluate function at current value of x
         value = myFunction(x)
         # Check the neighboring values of x
         for neighbor in [x - 1, x + 1]:
             # Evaluate function at neighbor value of x
             neighbor_value = myFunction(neighbor)
-            # If neighbor value is higher than best value found so far,
-            # update best value and best x
-            if neighbor_value > best_value:
-                best_value = neighbor_value
-                best_x = neighbor
-        # If current value is higher than best value found so far,
-        # update best value and best x
-        if value > best_value:
-            best_value = value
-            best_x = x
+            # Update best value and best x if neighbor value is higher
+            if neighbor_value > best_value or value > best_value:
+                best_value = neighbor_value if neighbor_value > value else value
+                best_x = neighbor if neighbor_value > value else x
     # Return best x found
     return best_x
-print(datetime.now())
+
+
 result = hill_climbing()
-print(datetime.now())
 print("Best value found at x = ", result, " with function value = ", myFunction(result))

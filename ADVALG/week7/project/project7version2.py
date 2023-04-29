@@ -29,16 +29,10 @@ def hill_climbing():
         for neighbor in [x - 1, x + 1]:
             # Evaluate function at neighbor value of x
             neighbor_value = myFunction(neighbor)
-            # If neighbor value is higher than best value found so far,
-            # update best value and best x
-            if neighbor_value > best_value:
-                best_value = neighbor_value
-                best_x = neighbor
-        # If current value is higher than best value found so far,
-        # update best value and best x
-        if value > best_value:
-            best_value = value
-            best_x = x
+            # Update best value and best x if neighbor value is higher
+            if neighbor_value > best_value or value > best_value:
+                best_value = neighbor_value if neighbor_value > value else value
+                best_x = neighbor if neighbor_value > value else x
     # Return best x found
     return best_x
 
