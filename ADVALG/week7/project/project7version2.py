@@ -1,3 +1,4 @@
+from datetime import datetime
 from math import log2
 import random
 """
@@ -5,7 +6,7 @@ Create a program that calls the function myFunction(x) from 0 to 9999 and applie
 find the value of x that delivers the largest value for the function
 """
 def myFunction(x):
-    if (x == 0):
+    if (x == 0) or x < 0:
         return 0
     elif ((log2(x) * 7) % 17) < (x % 13):
         return (x + log2(x)) ** 3
@@ -24,6 +25,15 @@ def hill_climbing():
     for x in range(0, 9999):
         # Evaluate function at current value of x
         value = myFunction(x)
+        # Check the neighboring values of x
+        for neighbor in [x - 1, x + 1]:
+            # Evaluate function at neighbor value of x
+            neighbor_value = myFunction(neighbor)
+            # If neighbor value is higher than best value found so far,
+            # update best value and best x
+            if neighbor_value > best_value:
+                best_value = neighbor_value
+                best_x = neighbor
         # If current value is higher than best value found so far,
         # update best value and best x
         if value > best_value:
