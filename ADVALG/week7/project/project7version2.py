@@ -19,7 +19,7 @@ def myFunction(x):
 def hill_climbing():
     # Start with random x 1- 9998
     best_x = random.randint(1, 9998)
-    # Evaluate function at x = 1 to get initial best value
+    # Evaluate function at x = random value to get initial best value
     best_value = myFunction(best_x)
     # Loop through all values of x from 2 to 9999
     for x in range(0, 9999):
