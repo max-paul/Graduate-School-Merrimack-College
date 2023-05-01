@@ -16,6 +16,14 @@ def myFunction(x):
 
 """
 
+"""
+we can implement any function for this hill climbing algorithm as long as it only takes in one param of x.
+else we will need to modify the params passed into the method within hill_climbing().
+
+as the instructions state; "but your program should work with any version of myFunction(x)"... i am interpreting this as a single param method
+where x is an int.
+
+"""
 def myFunction(x):
     if (x == 0) or x < 0:
         return 0
@@ -42,7 +50,7 @@ def hill_climbing():
 
 
     """
-    
+
     # Start with x = 1
     best_x = 0
     # Evaluate function at x = 1 to get initial best value
