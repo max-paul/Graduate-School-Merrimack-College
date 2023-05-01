@@ -22,7 +22,7 @@ def hill_climbing():
     # Evaluate function at x = random value to get initial best value
     best_value = myFunction(best_x)
     # Loop through all values of x from 2 to 9999
-    for x in range(0, 9999):
+    for x in range(0, 9999,3): # skipping 3 places as we check neighbors
         # Evaluate function at current value of x
         value = myFunction(x)
         # Check the neighboring values of x
