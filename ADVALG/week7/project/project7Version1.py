@@ -51,9 +51,9 @@ def hill_climbing():
 
     """
 
-    # Start with x = 1
+    # Start with x = 0
     best_x = 0
-    # Evaluate function at x = 1 to get initial best value
+    # Evaluate function at x = 0 to get initial best value
     best_value = myFunction(best_x)
     # Loop through all values of x from 2 to 9999
     for x in range(0, 9999,3): # skipping 3 places as we check neighbors +/- 1
