@@ -1,0 +1,11 @@
+I believe this is a solid design.
+
+1. Because each type of person is interfaced with the Person class. all people are people, but a student is not a teacher.
+Polymorphism.
+
+2. we could also apply this to Course. All courses are courses, but honors math is not math.
+Polymorphism
+
+3. Inheritance; each class inherits things from its super class. Attributes and methods.
+
+4. Encapsulated due to having private attrbutes. no other class can access these.
