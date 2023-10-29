@@ -1,0 +1,21 @@
+// The syntax for this file is proto3.
+syntax = "proto3";
+
+// Service definition for QuadraticSolver.
+service QuadraticSolver {
+  // SolveQuadratic is a single request-single response RPC method
+  // that takes a Coefficients message and returns a Solution message.
+  rpc SolveQuadratic (Coefficients) returns (Solution) {}
+}
+
+// Message representing the coefficients of a quadratic equation.
+message Coefficients {
+  double a = 1;  // Coefficient of x^2
+  double b = 2;  // Coefficient of x
+  double c = 3;  // Constant term
+}
+
+// Message representing the solution of a quadratic equation.
+message Solution {
+  string solution = 1;  // The solution as a string
+}
