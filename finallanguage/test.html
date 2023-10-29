@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Button and Style></title>
+        <style>
+            h2 {color:red}
+            body {background-color: beige; color:grey}
+        </style>
+    </head>
+    <body>
+        <h2 id="change_other">Click to change</h2>
+        <p>Color and other properties can be changed using a JavaScript function.</p>
+        <h3 id="change_js"; style="color:green">This Text Changes Color</h3>
+        <script>
+            function changeColor(color) {
+                if (color == 1)      { document.getElementById("change_js").style.color = 'black';
+                                        document.getElementById("change_other").style.color = 'black'; }
+                else if (color == 2) { document.getElementById("change_js").style.color = 'blue';
+                                        document.getElementById("change_other").style.color = 'blue';  }
+                else                 { document.getElementById("change_js").style.color = 'green'; 
+                                        document.getElementById("change_other").style.color = 'green'; } }
+        </script>
+        <button onclick="changeColor(1)">Black</button>
+        <button onclick="changeColor(2)">Blue</button>
+        <button onclick="changeColor(3)">Green</button>
+    </body>
+</html>
