@@ -2,7 +2,6 @@ import grpc
 import quadratic_pb2
 import quadratic_pb2_grpc
 
-# run is a function that starts a gRPC client.
 def run():
     channel = grpc.insecure_channel('localhost:50051')
     stub = quadratic_pb2_grpc.QuadraticSolverStub(channel)
